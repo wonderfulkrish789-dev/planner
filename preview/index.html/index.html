@@ -1,0 +1,2306 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CareerTech.AI</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter, Arial, sans-serif;
+    background:#07121e;
+    color:#17212c;
+    overflow-x:hidden;
+}
+
+:root{
+    --navy:#07121e;
+    --navy-2:#0b1928;
+    --navy-3:#102235;
+
+    --cream:#f7f3ed;
+    --cream-2:#eee8df;
+
+    --orange:#ff806b;
+    --orange-dark:#dc6653;
+    --orange-soft:#ffe1d9;
+
+    --text:#17212c;
+    --text-2:#45515d;
+    --muted:#747e88;
+    --light-muted:#9aa5af;
+
+    --white:#ffffff;
+}
+
+a{
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =====================================================
+   CURSOR GLOW
+===================================================== */
+
+.cursor{
+    position:fixed;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,128,107,.10),
+            transparent 68%
+        );
+
+    transform:translate(-50%,-50%);
+    z-index:9999;
+
+    transition:
+        left .1s linear,
+        top .1s linear;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:72px;
+
+    padding:0 6%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#ffffff;
+
+    font-size:16px;
+    font-weight:700;
+}
+
+.logo span{
+    color:var(--orange);
+}
+
+.logo-mark{
+    width:24px;
+    height:24px;
+
+    border:3px solid var(--orange);
+    border-radius:7px;
+
+    transform:rotate(45deg);
+
+    position:relative;
+}
+
+.logo-mark::after{
+    content:"";
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    background:var(--orange);
+    border-radius:50%;
+
+    top:6px;
+    left:6px;
+}
+
+.nav-links{
+    display:flex;
+    gap:32px;
+}
+
+.nav-links a{
+    color:#aab5c0;
+
+    font-size:10px;
+
+    transition:.3s;
+
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-7px;
+    left:0;
+
+    width:0;
+    height:2px;
+
+    background:var(--orange);
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#ffffff;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.login{
+    color:#b3bec8;
+    font-size:10px;
+
+    transition:.3s;
+}
+
+.login:hover{
+    color:#ffffff;
+}
+
+.nav-btn{
+    background:var(--orange);
+    color:#101820;
+
+    padding:10px 18px;
+
+    border-radius:20px;
+
+    font-size:9px;
+    font-weight:700;
+
+    transition:.3s;
+
+    box-shadow:
+        0 8px 20px rgba(255,128,107,.16);
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(255,128,107,.30);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:590px;
+
+    padding-top:72px;
+
+    display:grid;
+    grid-template-columns:52% 48%;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:var(--cream);
+}
+
+
+/* =====================================================
+   HERO LEFT
+===================================================== */
+
+.hero-left{
+    position:relative;
+    z-index:5;
+
+    min-height:518px;
+
+    padding:
+        70px
+        11%
+        65px
+        8%;
+
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+
+    background:
+        radial-gradient(
+            circle at 75% 80%,
+            rgba(255,128,107,.14),
+            transparent 30%
+        ),
+        #07121e;
+
+    clip-path:polygon(
+        0 0,
+        94% 0,
+        97% 2%,
+        97% 7%,
+        95% 14%,
+        92% 23%,
+        89% 33%,
+        86% 43%,
+        83% 53%,
+        80% 63%,
+        76% 73%,
+        73% 82%,
+        70% 91%,
+        67% 100%,
+        0 100%
+    );
+}
+
+.hero-left::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:45px 45px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+}
+
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
+
+.hero-content{
+    position:relative;
+    z-index:10;
+
+    max-width:560px;
+}
+
+.eyebrow{
+    color:#ff9b89;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+    letter-spacing:2px;
+
+    margin-bottom:17px;
+}
+
+.hero-title{
+    color:#ffffff;
+
+    font-family:Georgia,serif;
+
+    font-size:clamp(
+        40px,
+        4.2vw,
+        62px
+    );
+
+    font-weight:400;
+
+    line-height:.98;
+
+    letter-spacing:-2px;
+}
+
+.hero-title span{
+    color:var(--orange);
+}
+
+.hero-description{
+    max-width:445px;
+
+    margin-top:21px;
+
+    color:#a8b4bf;
+
+    font-size:11px;
+
+    line-height:1.75;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.hero-actions{
+    display:flex;
+    gap:10px;
+
+    margin-top:24px;
+}
+
+.primary-btn{
+    display:inline-block;
+
+    padding:12px 20px;
+
+    background:var(--orange);
+
+    color:#111820;
+
+    border-radius:7px;
+
+    font-size:9px;
+    font-weight:700;
+
+    transition:.35s;
+
+    box-shadow:
+        0 10px 25px rgba(255,128,107,.18);
+}
+
+.primary-btn:hover{
+    transform:translateY(-4px);
+
+    background:#ff907d;
+
+    box-shadow:
+        0 16px 35px rgba(255,128,107,.32);
+}
+
+.secondary-btn{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    border-radius:7px;
+
+    color:#d3dbe2;
+
+    font-size:9px;
+
+    transition:.3s;
+}
+
+.secondary-btn:hover{
+    color:#ffffff;
+
+    border-color:
+        rgba(255,128,107,.55);
+
+    background:
+        rgba(255,255,255,.04);
+
+    transform:translateY(-3px);
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+    display:flex;
+    gap:38px;
+
+    margin-top:29px;
+}
+
+.stat strong{
+    display:block;
+
+    color:#ffffff;
+
+    font-family:Georgia,serif;
+
+    font-size:20px;
+    font-weight:400;
+
+    margin-bottom:5px;
+}
+
+.stat span{
+    color:#82909e;
+
+    font-size:8px;
+}
+
+
+/* =====================================================
+   HERO RIGHT
+===================================================== */
+
+.hero-right{
+    position:relative;
+    z-index:2;
+
+    margin-left:-9%;
+
+    min-height:518px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffaf5,
+            var(--cream)
+        );
+
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   ORBITS
+===================================================== */
+
+.orbit{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,128,107,.22);
+
+    transform:translate(-50%,-50%);
+
+    animation:rotate 18s linear infinite;
+}
+
+.orbit.one{
+    width:470px;
+    height:300px;
+}
+
+.orbit.two{
+    width:365px;
+    height:245px;
+
+    border-color:
+        rgba(255,128,107,.16);
+
+    animation-duration:14s;
+    animation-direction:reverse;
+}
+
+.orbit.three{
+    width:270px;
+    height:185px;
+
+    border-style:dashed;
+
+    animation-duration:10s;
+}
+
+@keyframes rotate{
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   HERO CARDS
+===================================================== */
+
+.flow{
+    position:relative;
+    z-index:10;
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+}
+
+.resume-card,
+.future-card{
+    background:#ffffff;
+
+    border:1px solid #e5ded5;
+
+    border-radius:13px;
+
+    box-shadow:
+        0 20px 55px rgba(48,37,27,.13);
+
+    transition:.4s;
+}
+
+.resume-card{
+    width:155px;
+    min-height:185px;
+
+    padding:18px;
+}
+
+.future-card{
+    width:160px;
+    min-height:190px;
+
+    padding:18px;
+}
+
+.resume-card:hover{
+    transform:
+        translateY(-10px)
+        rotate(-2deg);
+
+    box-shadow:
+        0 30px 70px rgba(48,37,27,.19);
+}
+
+.future-card:hover{
+    transform:
+        translateY(-10px)
+        rotate(2deg);
+
+    box-shadow:
+        0 30px 70px rgba(48,37,27,.19);
+}
+
+.card-icon{
+    width:32px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:8px;
+
+    background:var(--orange-soft);
+
+    color:var(--orange-dark);
+
+    font-size:14px;
+
+    margin-bottom:14px;
+}
+
+.card-title{
+    color:#17212c;
+
+    font-family:Georgia,serif;
+
+    font-size:15px;
+
+    margin-bottom:14px;
+}
+
+.line{
+    height:5px;
+
+    background:#dfe3e6;
+
+    border-radius:20px;
+
+    margin:9px 0;
+}
+
+.line.l1{width:85%}
+.line.l2{width:65%}
+.line.l3{width:92%}
+.line.l4{width:50%}
+
+.flow-arrow{
+    width:39px;
+    height:39px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--orange);
+
+    color:#101820;
+
+    font-size:17px;
+    font-weight:bold;
+
+    box-shadow:
+        0 12px 30px rgba(255,128,107,.28);
+
+    animation:
+        arrowMove 2s ease-in-out infinite;
+}
+
+@keyframes arrowMove{
+    50%{
+        transform:translateX(6px);
+    }
+}
+
+.future-list{
+    list-style:none;
+}
+
+.future-list li{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:#45515d;
+
+    font-size:9px;
+
+    margin:10px 0;
+}
+
+.check{
+    width:15px;
+    height:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#e4f2e9;
+
+    color:#36845b;
+
+    font-size:8px;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features{
+    padding:
+        75px
+        6%
+        82px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f7f3ed,
+            #fbf8f4
+        );
+
+    color:var(--text);
+
+    text-align:center;
+}
+
+.section-heading{
+    color:#17212c;
+
+    font-family:Georgia,serif;
+
+    font-size:29px;
+
+    font-weight:400;
+
+    letter-spacing:-.5px;
+}
+
+.section-subtitle{
+    color:#6f7983;
+
+    font-size:9px;
+
+    margin-top:9px;
+    margin-bottom:42px;
+}
+
+.features-grid{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
+}
+
+.feature{
+    position:relative;
+
+    padding:
+        16px
+        22px
+        24px;
+
+    border-right:
+        1px solid #ded8d0;
+
+    transition:.4s;
+}
+
+.feature:last-child{
+    border-right:none;
+}
+
+.feature:hover{
+    transform:translateY(-8px);
+}
+
+.feature-icon{
+    width:38px;
+    height:38px;
+
+    margin:
+        0 auto
+        15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:#ffe3db;
+
+    color:#cf604d;
+
+    font-size:14px;
+
+    transition:.4s;
+}
+
+.feature:hover .feature-icon{
+    transform:
+        scale(1.12)
+        rotate(6deg);
+
+    box-shadow:
+        0 12px 28px rgba(255,128,107,.20);
+}
+
+.feature h3{
+    color:#202b35;
+
+    font-family:Georgia,serif;
+
+    font-size:13px;
+
+    line-height:1.3;
+
+    margin-bottom:9px;
+}
+
+.feature p{
+    color:#707a83;
+
+    font-size:8px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   HOW IT WORKS
+===================================================== */
+
+.how{
+    padding:
+        70px
+        6%
+        80px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,128,107,.07),
+            transparent 38%
+        ),
+        #07121e;
+
+    color:white;
+}
+
+.how .section-heading{
+    color:#ffffff;
+}
+
+.how .section-subtitle{
+    color:#8b98a5;
+}
+
+.how-header{
+    max-width:1100px;
+    margin:auto;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+}
+
+.step{
+    position:relative;
+
+    min-height:150px;
+
+    padding:20px;
+
+    border-radius:11px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    transition:.4s;
+
+    overflow:hidden;
+}
+
+.step:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(255,128,107,.38);
+
+    background:
+        rgba(255,255,255,.05);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.28);
+}
+
+.step-number{
+    width:26px;
+    height:26px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--orange);
+
+    color:#101820;
+
+    font-size:9px;
+    font-weight:bold;
+
+    margin-bottom:18px;
+}
+
+.step h3{
+    color:#ffffff;
+
+    font-family:Georgia,serif;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+}
+
+.step p{
+    color:#8d9aa7;
+
+    font-size:8px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   AI SECTION
+===================================================== */
+
+.ai-section{
+    padding:
+        90px
+        7%;
+
+    background:#07121e;
+
+    color:white;
+}
+
+.ai-wrap{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        .9fr
+        1.1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.ai-label{
+    color:var(--orange);
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+}
+
+.ai-title{
+    color:#ffffff;
+
+    font-family:Georgia,serif;
+
+    font-size:43px;
+
+    line-height:1.05;
+
+    font-weight:400;
+}
+
+.ai-title span{
+    color:var(--orange);
+}
+
+.ai-text{
+    color:#9aa6b1;
+
+    font-size:11px;
+
+    line-height:1.8;
+
+    margin:
+        18px
+        0
+        25px;
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+.dashboard{
+    padding:23px;
+
+    background:#0b1928;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:17px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+
+    transition:.4s;
+}
+
+.dashboard:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(255,128,107,.3);
+}
+
+.dashboard-top{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:24px;
+}
+
+.dashboard-name{
+    color:#ffffff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+.live{
+    color:#65d998;
+
+    font-size:8px;
+}
+
+.score-area{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-bottom:25px;
+}
+
+.score-ring{
+    width:105px;
+    height:105px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            var(--orange) 87%,
+            #1c2c3b 0
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.score-ring::before{
+    content:"";
+
+    position:absolute;
+
+    width:78px;
+    height:78px;
+
+    border-radius:50%;
+
+    background:#0b1928;
+}
+
+.score-ring strong{
+    position:relative;
+    z-index:2;
+
+    color:#ffffff;
+
+    font-size:20px;
+}
+
+.score-copy h3{
+    color:#ffffff;
+
+    font-family:Georgia,serif;
+
+    font-size:18px;
+
+    margin-bottom:5px;
+}
+
+.score-copy p{
+    color:#8593a1;
+
+    font-size:9px;
+
+    line-height:1.6;
+}
+
+.bars{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.bar-row{
+    display:grid;
+
+    grid-template-columns:
+        100px
+        1fr
+        32px;
+
+    align-items:center;
+
+    gap:9px;
+
+    color:#9aa6b1;
+
+    font-size:8px;
+}
+
+.bar{
+    height:5px;
+
+    background:#1b2a38;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+
+    height:100%;
+
+    width:var(--width);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff806b,
+            #ffab98
+        );
+
+    border-radius:20px;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+    padding:
+        90px
+        20px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffaf5,
+            #f7f3ed
+        );
+
+    color:var(--text);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.cta h2{
+    position:relative;
+    z-index:2;
+
+    color:#17212c;
+
+    font-family:Georgia,serif;
+
+    font-size:44px;
+
+    font-weight:400;
+}
+
+.cta h2 span{
+    color:var(--orange-dark);
+}
+
+.cta p{
+    position:relative;
+    z-index:2;
+
+    max-width:500px;
+
+    margin:
+        15px
+        auto
+        26px;
+
+    color:#68737d;
+
+    font-size:10px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    min-height:70px;
+
+    padding:0 6%;
+
+    background:#050c14;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    color:#7d8995;
+
+    font-size:8px;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:950px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-left{
+        min-height:580px;
+
+        clip-path:none;
+
+        padding:
+            80px
+            8%;
+    }
+
+    .hero-right{
+        margin-left:0;
+
+        min-height:450px;
+    }
+
+    .features-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .feature{
+        border-bottom:
+            1px solid #ded8d0;
+    }
+
+    .steps{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .ai-wrap{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:0 5%;
+    }
+
+    .nav-right .login{
+        display:none;
+    }
+
+    .hero-left{
+        padding:
+            70px
+            7%
+            65px;
+    }
+
+    .hero-title{
+        font-size:43px;
+    }
+
+    .hero-actions{
+        flex-wrap:wrap;
+    }
+
+    .stats{
+        gap:18px;
+    }
+
+    .flow{
+        transform:scale(.72);
+    }
+
+    .features-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        border-right:none;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .ai-title{
+        font-size:36px;
+    }
+
+    .cta h2{
+        font-size:36px;
+    }
+
+    footer{
+        padding:20px;
+
+        flex-direction:column;
+
+        gap:8px;
+
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="cursor"></div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-mark"></div>
+
+        CareerTech<span>.AI</span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#how">
+            How It Works
+        </a>
+
+        <a href="#ai">
+            AI Intelligence
+        </a>
+
+        <a href="#pricing">
+            Pricing
+        </a>
+
+    </div>
+
+
+    <div class="nav-right">
+
+        <a class="login" href="#">
+            Login
+        </a>
+
+        <a class="nav-btn" href="#features">
+            Get Started
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <div class="hero-left">
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+                AI Career Guidance Platform
+            </div>
+
+
+            <h1 class="hero-title">
+
+                Turn Your
+
+                <br>
+
+                Resume Into
+
+                <br>
+
+                <span>
+                    Real Opportunities
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Get personalized job recommendations,
+                identify your skill gaps, learn what to
+                study, and prepare for interviews —
+                all powered by AI.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#features"
+                    class="primary-btn">
+
+                    Upload Resume →
+                </a>
+
+
+                <a
+                    href="#how"
+                    class="secondary-btn">
+
+                    ◉ &nbsp; See How It Works
+
+                </a>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <strong>
+                        50K+
+                    </strong>
+
+                    <span>
+                        Students & Job Seekers
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        4.8 ★
+                    </strong>
+
+                    <span>
+                        User Rating
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        95%
+                    </strong>
+
+                    <span>
+                        Career Match Accuracy
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="hero-right">
+
+        <div class="orbit one"></div>
+        <div class="orbit two"></div>
+        <div class="orbit three"></div>
+
+
+        <div class="flow">
+
+
+            <div class="resume-card">
+
+                <div class="card-icon">
+                    📄
+                </div>
+
+                <div class="card-title">
+                    Your Resume
+                </div>
+
+                <div class="line l1"></div>
+                <div class="line l2"></div>
+                <div class="line l3"></div>
+                <div class="line l4"></div>
+
+            </div>
+
+
+            <div class="flow-arrow">
+                →
+            </div>
+
+
+            <div class="future-card">
+
+                <div class="card-icon">
+                    ✦
+                </div>
+
+                <div class="card-title">
+                    Your Future
+                </div>
+
+
+                <ul class="future-list">
+
+                    <li>
+                        <span class="check">✓</span>
+                        Better Skills
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Job Matches
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Interview Ready
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        30-Day Roadmap
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="features"
+    id="features">
+
+    <h2 class="section-heading">
+        Everything You Need for Career Success
+    </h2>
+
+    <p class="section-subtitle">
+        One platform. Complete career support.
+    </p>
+
+
+    <div class="features-grid">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📄
+            </div>
+
+            <h3>
+                Smart Resume<br>
+                Analysis
+            </h3>
+
+            <p>
+                Get ATS-friendly<br>
+                improvements.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⌕
+            </div>
+
+            <h3>
+                Skill Gap<br>
+                Detection
+            </h3>
+
+            <p>
+                Know what to<br>
+                learn next.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>
+                AI Learning<br>
+                Recommendations
+            </h3>
+
+            <p>
+                Personalized &<br>
+                role-specific.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ♟
+            </div>
+
+            <h3>
+                Interview<br>
+                Preparation
+            </h3>
+
+            <p>
+                Practice questions<br>
+                & feedback.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ▣
+            </div>
+
+            <h3>
+                30-Day<br>
+                Roadmap
+            </h3>
+
+            <p>
+                Structured plan<br>
+                to get hired.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section
+    class="how"
+    id="how">
+
+    <div class="how-header">
+
+        <h2 class="section-heading">
+            How It Works
+        </h2>
+
+        <p class="section-subtitle">
+            Just 4 simple steps to get on the right track.
+        </p>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Upload Resume
+                </h3>
+
+                <p>
+                    Add your resume and let our AI
+                    understand your profile.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Set Target Role
+                </h3>
+
+                <p>
+                    Choose the job role you want
+                    to prepare for.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Get AI Insights
+                </h3>
+
+                <p>
+                    Discover missing skills and
+                    your career gaps.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Start Learning
+                </h3>
+
+                <p>
+                    Follow your personalized
+                    30-day roadmap.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     AI INTELLIGENCE
+===================================================== -->
+
+<section
+    class="ai-section"
+    id="ai">
+
+    <div class="ai-wrap">
+
+
+        <div class="reveal">
+
+            <div class="ai-label">
+                Career Intelligence
+            </div>
+
+
+            <h2 class="ai-title">
+
+                Your career.
+
+                <br>
+
+                <span>
+                    Understood by AI.
+                </span>
+
+            </h2>
+
+
+            <p class="ai-text">
+
+                CareerTech.AI compares your current
+                profile with your desired role and
+                identifies exactly what you need to
+                improve to become job-ready.
+
+            </p>
+
+
+            <a
+                href="#features"
+                class="primary-btn">
+
+                Explore AI →
+            </a>
+
+        </div>
+
+
+
+        <div class="dashboard reveal">
+
+
+            <div class="dashboard-top">
+
+                <div class="dashboard-name">
+                    Career Intelligence
+                </div>
+
+                <div class="live">
+                    ● LIVE ANALYSIS
+                </div>
+
+            </div>
+
+
+            <div class="score-area">
+
+                <div class="score-ring">
+
+                    <strong>
+                        87%
+                    </strong>
+
+                </div>
+
+
+                <div class="score-copy">
+
+                    <h3>
+                        Strong Match
+                    </h3>
+
+                    <p>
+                        Your profile matches most
+                        requirements for the target role.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="bars">
+
+
+                <div class="bar-row">
+
+                    <span>
+                        Technical Skills
+                    </span>
+
+                    <div class="bar">
+                        <span
+                            style="--width:88%">
+                        </span>
+                    </div>
+
+                    <span>88%</span>
+
+                </div>
+
+
+                <div class="bar-row">
+
+                    <span>
+                        Communication
+                    </span>
+
+                    <div class="bar">
+                        <span
+                            style="--width:65%">
+                        </span>
+                    </div>
+
+                    <span>65%</span>
+
+                </div>
+
+
+                <div class="bar-row">
+
+                    <span>
+                        Projects
+                    </span>
+
+                    <div class="bar">
+                        <span
+                            style="--width:78%">
+                        </span>
+                    </div>
+
+                    <span>78%</span>
+
+                </div>
+
+
+                <div class="bar-row">
+
+                    <span>
+                        Interview
+                    </span>
+
+                    <div class="bar">
+                        <span
+                            style="--width:54%">
+                        </span>
+                    </div>
+
+                    <span>54%</span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta" id="pricing">
+
+    <h2>
+        Build Your
+        <span>Future.</span>
+    </h2>
+
+
+    <p>
+
+        Upload your resume, choose your target role,
+        and let AI create your personalized path
+        to becoming job-ready.
+
+    </p>
+
+
+    <a
+        href="#"
+        class="primary-btn">
+
+        Get Started Free →
+
+    </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+        © 2026 CareerTech.AI
+    </div>
+
+    <div>
+        AI-Powered Career Guidance
+    </div>
+
+    <div>
+        Resume → Skills → Interview → Job Ready
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+const cursor =
+document.querySelector(".cursor");
+
+document.addEventListener(
+    "mousemove",
+    e => {
+
+        cursor.style.left =
+            e.clientX + "px";
+
+        cursor.style.top =
+            e.clientY + "px";
+
+    }
+);
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+const observer =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add(
+                    "show"
+                );
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+revealElements.forEach(
+    el => observer.observe(el)
+);
+
+
+/* =====================================================
+   CARD TILT
+===================================================== */
+
+document
+.querySelectorAll(
+    ".resume-card, .future-card, .dashboard"
+)
+.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        e => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                e.clientX - rect.left;
+
+            const y =
+                e.clientY - rect.top;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 6;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -6;
+
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-7px)`;
+
+        }
+    );
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform = "";
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   MAGNETIC BUTTONS
+===================================================== */
+
+document
+.querySelectorAll(
+    ".primary-btn,.nav-btn"
+)
+.forEach(btn => {
+
+    btn.addEventListener(
+        "mousemove",
+        e => {
+
+            const rect =
+                btn.getBoundingClientRect();
+
+            const x =
+                e.clientX -
+                rect.left -
+                rect.width / 2;
+
+            const y =
+                e.clientY -
+                rect.top -
+                rect.height / 2;
+
+            btn.style.transform =
+                `translate(
+                    ${x*.12}px,
+                    ${y*.12}px
+                )`;
+
+        }
+    );
+
+    btn.addEventListener(
+        "mouseleave",
+        () => {
+
+            btn.style.transform = "";
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+</html>
+```
